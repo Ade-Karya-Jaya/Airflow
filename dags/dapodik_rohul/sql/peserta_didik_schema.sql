@@ -1,0 +1,156 @@
+-- ----------------------------
+-- Schema for dapodik_rohul
+-- ----------------------------
+CREATE SCHEMA IF NOT EXISTS dapodik_rohul AUTHORIZATION postgres;
+
+-- ----------------------------
+-- Table structure 
+-- ----------------------------
+DROP TABLE IF EXISTS "dapodik_rohul"."peserta_didik";
+CREATE TABLE "dapodik_rohul"."peserta_didik" (
+  "peserta_didik_id" uuid NOT NULL, -- untuk sp fomal
+  "semester_id" char(5),
+  "sekolah_id" uuid NOT NULL, 
+  "rombongan_belajar_id" uuid,  -- untuk sp formal
+  "anggota_rombel_id" uuid,  -- untuk sp formal
+  -- "rombongan_belajar_id" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "anggota_rombel_id" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_kelamin" char(2) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nisn" varchar(50) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nik" varchar(50) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "no_kk" varchar(50) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying, 
+  "tempat_lahir" varchar(100) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tanggal_lahir" DATE,
+  "agama_id" smallint,
+  "agama" varchar(100) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kewarganegaraan" char(6) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kebutuhan_khusus_id" integer,
+  "kebutuhan_khusus" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "alamat_jalan" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "rt" numeric,
+  "rw" numeric,
+  "nama_dusun" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "desa_kelurahan" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kode_wilayah" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kode_kecamatan" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kecamatan" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kode_kabupaten" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kabupaten" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kode_provinsi" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "provinsi" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kode_pos" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "lintang" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "bujur" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_tinggal_id" numeric,
+  "jenis_tinggal" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "alat_transportasi_id" numeric,
+  "alat_transportasi" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nik_ayah" char(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nik_ibu" char(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "anak_keberapa" numeric,
+  "nik_wali" char(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nomor_telepon_rumah" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nomor_telepon_seluler" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "email" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "penerima_KPS",
+  -- "no_KPS",
+  -- "layak_PIP",
+  -- "penerima_KIP",
+  -- "no_KIP",
+  -- "nm_KIP",
+  -- "no_KKS",
+  "reg_akta_lahir" varchar(100) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "id_layak_pip" numeric,
+  "alasan_layak_pip" varchar(200) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_ayah" varchar(200) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tahun_lahir_ayah" numeric,
+  "jenjang_pendidikan_ayah" numeric,
+  "jenjang_pendidikan_ayah_keterangan" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "pekerjaan_id_ayah" integer,
+  "pekerjaan_ayah" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "penghasilan_id_ayah" integer,
+  "penghasilan_ayah" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kebutuhan_khusus_id_ayah" integer,
+  "kebutuhan_khusus_ayah" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_ibu_kandung" varchar(200) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tahun_lahir_ibu" numeric,
+  "jenjang_pendidikan_ibu" numeric,
+  "jenjang_pendidikan_ibu_keterangan" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "pekerjaan_id_ibu" integer,
+  "pekerjaan_ibu" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "penghasilan_id_ibu" integer,
+  "penghasilan_ibu" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "kebutuhan_khusus_id_ibu" integer,
+  "kebutuhan_khusus_ibu" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_wali" varchar(200) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tahun_lahir_wali" numeric,
+  "jenjang_pendidikan_wali" numeric,
+  "jenjang_pendidikan_wali_keterangan" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "pekerjaan_id_wali" integer,
+  "pekerjaan_wali" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "penghasilan_id_wali" integer,
+  "penghasilan_wali" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "id_bank" char(10) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "bank" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_kcp" varchar(120) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "rekening_bank" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "rekening_atas_nama" varchar(120) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_pendaftaran_rombel" numeric,
+  "jenis_pendaftaran_rombel_keterangan" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tingkat_pendidikan_id" numeric,
+  "tingkat_pendidikan" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jurusan_sp_id" varchar(100) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_jurusan" varchar(120) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_rombel" numeric,
+  "jenis_rombel_keterangan" varchar(100) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nama_rombel" varchar(120) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "moving_class" numeric,
+  "sks" numeric,
+  "registrasi_id" varchar(120) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_pendaftaran_registrasi" numeric,
+  "jenis_pendaftaran_registrasi_keterangan" varchar(80) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "nipd" varchar(40) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tanggal_masuk_sekolah" DATE,
+  "jenis_keluar_id" char(6) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "jenis_keluar" varchar(60) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tanggal_keluar" DATE,
+  "keterangan_registrasi" varchar(160) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  -- "no_SKHUN",
+  -- "no_peserta_ujian",
+  -- "no_seri_ijazah",
+  "a_pernah_paud" numeric,
+  "a_pernah_tk" numeric,
+  "sekolah_asal" varchar(160) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "hobby" varchar(160) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "cita" varchar(160) COLLATE "pg_catalog"."default" DEFAULT NULL::character varying,
+  "tinggi_badan" numeric,
+  "berat_badan" numeric,
+  "lingkar_kepala" numeric,
+  "jarak_rumah_ke_sekolah" numeric,
+  "jarak_rumah_ke_sekolah_km" numeric,
+  "waktu_tempuh_ke_sekolah" numeric,
+  "menit_tempuh_ke_sekolah" numeric,
+  "jumlah_saudara_kandung" numeric,
+  "create_date" timestamp,
+  "last_update" timestamp,
+  "soft_delete_registrasi_peserta_didik" numeric,
+  "soft_delete_peserta_didik_longitudinal" numeric,
+  "soft_delete_rombongan_belajar" numeric,
+  "soft_delete_anggota_rombel" numeric
+)
+;
+ALTER TABLE "dapodik_rohul"."peserta_didik" OWNER TO "postgres";
+
+-- ----------------------------
+-- Indexes structure 
+-- ----------------------------
+
+CREATE INDEX "peserta_didik_idx" ON "dapodik_rohul"."peserta_didik" USING btree (
+  "peserta_didik_id" "pg_catalog"."uuid_ops" ASC NULLS LAST
+);
+
+CREATE INDEX "pd_sekolah_idx" ON "dapodik_rohul"."peserta_didik" USING btree (
+  "sekolah_id" "pg_catalog"."uuid_ops" ASC NULLS LAST
+);
+
